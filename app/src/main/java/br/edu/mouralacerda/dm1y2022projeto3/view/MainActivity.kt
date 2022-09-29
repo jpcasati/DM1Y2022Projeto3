@@ -3,14 +3,14 @@ package br.edu.mouralacerda.dm1y2022projeto3.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
-import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import br.edu.mouralacerda.dm1y2022projeto3.R
 import br.edu.mouralacerda.dm1y2022projeto3.databinding.ActivityMainBinding
 import br.edu.mouralacerda.dm1y2022projeto3.model.Produto
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -51,12 +51,12 @@ class MainActivity : AppCompatActivity() {
                     atualizarLista()
                     Toast.makeText(this, "Produto removido com sucesso!",
                         Toast.LENGTH_LONG).show()
-            }
-            .setNegativeButton("Não") { dialog, which ->
-                Toast.makeText(this, "Produto não removido!",
-                    Toast.LENGTH_LONG).show()
-            }
-            .show()
+                }
+                .setNegativeButton("Não") { dialog, which ->
+                    Toast.makeText(this, "Produto não removido!",
+                        Toast.LENGTH_LONG).show()
+                }
+                .show()
             true
         }
 
@@ -82,6 +82,46 @@ class MainActivity : AppCompatActivity() {
         )
 
         b.lstProdutos.adapter = adp
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.menu_principal, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(listaDeProdutos.size > 1) {
+            if (item.itemId == R.id.menuOrdenarId) {
+                Toast.makeText(
+                    this, "Ordenando a lista por ID",
+                    Toast.LENGTH_LONG
+                ).show()
+                // Ordeno a lista por ID aqui
+            } else if (item.itemId == R.id.menuOrdenarValor) {
+                Toast.makeText(
+                    this, "Ordenando a lista por Valor",
+                    Toast.LENGTH_LONG
+                ).show()
+                // Ordeno a lista por Valor aqui
+            }
+        } else {
+            Toast.makeText(this, "Não é necessário ordenar a lista",
+                Toast.LENGTH_LONG).show()
+        }
+
+        if(item.itemId == R.id.menuFechar) {
+            // Alert dialog para fechar App
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "Utilize o menu para sair",
+            Toast.LENGTH_LONG).show()
     }
 
 }

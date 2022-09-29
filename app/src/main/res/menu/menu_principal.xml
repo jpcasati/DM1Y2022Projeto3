@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuOrdenarId"
+        android:title="Ordenar por ID"
+        android:icon="@drawable/ic_chave"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/menuOrdenarValor"
+        android:title="Ordenar por Valor"
+        android:icon="@drawable/ic_valor"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/menuFechar"
+        android:title="Fechar App"
+        android:icon="@drawable/ic_fechar"
+        app:showAsAction="always"
+        />
+</menu>

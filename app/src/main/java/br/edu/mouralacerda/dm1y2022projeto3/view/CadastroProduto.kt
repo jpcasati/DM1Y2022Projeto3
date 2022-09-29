@@ -5,18 +5,25 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import br.edu.mouralacerda.dm1y2022projeto3.R
+import br.edu.mouralacerda.dm1y2022projeto3.databinding.ActivityCadastroProdutoBinding
+import br.edu.mouralacerda.dm1y2022projeto3.databinding.ActivityMainBinding
 import br.edu.mouralacerda.dm1y2022projeto3.model.Produto
 
 class CadastroProduto : AppCompatActivity() {
+
+    private val b by lazy {
+        ActivityCadastroProdutoBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastro_produto)
+        setContentView(b.root)
 
-        findViewById<Button>(R.id.btnSalvar).setOnClickListener {
+        b.btnSalvar.setOnClickListener {
             val produto = Produto(
-                findViewById<EditText>(R.id.edtId).text.toString().toInt(),
-                findViewById<EditText>(R.id.edtNome).text.toString(),
-                findViewById<EditText>(R.id.edtValor).text.toString().toDouble()
+                b.edtId.text.toString().toInt(),
+                b.edtNome.text.toString(),
+                b.edtValor.text.toString().toDouble()
             )
 
             intent.putExtra("produto", produto)
